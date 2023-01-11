@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+div h1{
+    width:max-content;
+    margin: 40px auto;
+}
+h1{
+    color:#75B79E;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 56px;
+    line-height: 66px;
+    letter-spacing: -0.004em;
+    text-align: center;
+    word-wrap: wrap;
+}
+.container-principal{
+    width: 872px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 7px auto;
+}
+.card {
+    width: 117px;
+    height: 146px;
+    margin-bottom: 34px;
+    position: relative;
+  }
+
+  .face {
+    width: 100%;
+    height: 100%;
+    background-color: #A7E9AF;
+    border-radius: 5px;
+    border: 1px solid #99CEA8;
+    box-shadow: 1px 1px 1px rgba(0,0,0,.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    backface-visibility: hidden;
+    transition: all .5s;
+    transform-style: preserve-3d;
+  }
+  img{
+    width: 100px;
+  }
+
+  .back-face {
+    transform: rotateY(180deg);
+  }
+
+  .card.vira .back-face {
+    transform: rotateY(0deg);
+  }
+
+  .card.vira .front-face {
+    transform: rotateY(-180deg);
+  }
+  @media(max-width:872px){
+    div h1{
+        width: auto;
+    }
+    .container-principal{
+        width: 100vw;
+    }
+    .card{
+        margin-left: 30px;
+    }
+  }
+  @media(max-width:335px){
+    div h1{
+        width: auto;
+    }
+    h1{
+        font-size: 36px;
+        line-height: 42px;
+        letter-spacing: -0.004em;
+    }
+    .container-principal{
+        width: max-content;
+        flex-direction: column;
+    }
+    .card{
+        margin-left: 0;
+    }
+  }
