@@ -1,4 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+body{
+    background-color: #E5E5E5;
+}
 div h1{
     width:max-content;
     margin: 40px auto;

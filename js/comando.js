@@ -47,30 +47,38 @@ while(contador<cartasDistribuidas.length){
 
 //Virando as cartas
 
-contador=0;
+contador = 0;
 let espera = 0;
+let numeroDeJogadas = 0;
+let quantidadeDeAcertos = 0;
 function primeiraCarta(carta){
     carta.classList.add("vira");
+    numeroDeJogadas++;
     contador++;
 }
 function segundaCarta(carta){
+    numeroDeJogadas++;
     espera++;
     carta.classList.add("vira");
     contador = 0;
     const cartasViradas = document.querySelectorAll('.vira');
-    console.log(cartasViradas);
     if(cartasViradas[0].innerHTML===cartasViradas[1].innerHTML){
-        console.log('São Iguais');
         cartasViradas[0].classList.add('cartasIguais');
         cartasViradas[1].classList.add('cartasIguais');
         cartasViradas[0].classList.remove('vira');
         cartasViradas[1].classList.remove('vira');
+        quantidadeDeAcertos+=2;
+        console.log(quantidadeDeAcertos);
+        console.log(numCartas);
         espera=0;
     }
     else{
         setTimeout(function(){cartasViradas[0].classList.remove("vira");}, 1000);
         setTimeout(function(){cartasViradas[1].classList.remove("vira");}, 1000);
         setTimeout(function(){espera=0;}, 1000);
+    }
+    if(Number(quantidadeDeAcertos)===Number(numCartas)){
+        fimDoJogo();
     }
 }
 function viraCarta(carta){
@@ -84,11 +92,9 @@ function viraCarta(carta){
         segundaCarta(carta);
     }
 }
-//function viraCarta(carta){
-  //  carta.classList.add("vira");
-   // setTimeout(function(){carta.classList.remove("vira");}, 2000);
-//}
-
+function fimDoJogo(){
+    setTimeout(function(){alert(`"Você ganhou em ${numeroDeJogadas} jogadas!"`);},500);
+}
 
 
 
