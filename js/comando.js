@@ -1,7 +1,12 @@
 const gifs =['./img/bobrossparrot.gif','./img/explodyparrot.gif','./img/fiestaparrot.gif','./img/metalparrot.gif','./img/revertitparrot.gif','./img/tripletsparrot.gif','./img/unicornparrot.gif']; 
 gifs.sort(comparador);
 let numCartas;
-
+const segundo = document.querySelector('.segundo');
+const minuto = document.querySelector('.minuto');
+let segundoTempo = 0;
+let minutoTempo = 0
+let parar = true;
+let cron;
 //Começo do jogo
 
 numeroDeCartas();
@@ -44,6 +49,7 @@ while(contador<cartasDistribuidas.length){
     containerPrincipal.innerHTML+=cartasDistribuidas[contador];
     contador++;
 }
+start();
 
 //Virando as cartas
 
@@ -93,9 +99,28 @@ function viraCarta(carta){
     }
 }
 function fimDoJogo(){
-    setTimeout(function(){alert(`"Você ganhou em ${numeroDeJogadas} jogadas!"`);},500);
+    clearInterval(cron);
+    console.log(document.querySelector('.timer').innerHTML);
+    setTimeout(function(){alert(`Você ganhou em ${numeroDeJogadas} jogadas! A duração do jogo foi de ${contagem(Number(minutoTempo))}:${contagem(Number(segundoTempo))} segundos!`);},500);
 }
 
+//Implementação do bônus
+//Timer
+function start() {
+    cron = setInterval(() => { iniciaTimer(); }, 1000);
+  }
+function iniciaTimer(){
+    segundoTempo++;
+    if(Number(segundoTempo)===60){
+        segundoTempo = 0;
+        minutoTempo++;
+    }
+    segundo.innerHTML = contagem(Number(segundoTempo));
+    minuto.innerHTML = contagem(Number(minutoTempo));
+}
+function contagem(valor){
+    return valor >= 10 ? valor : `0${valor}`;
+}
 
 
 
