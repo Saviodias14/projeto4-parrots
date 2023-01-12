@@ -51,11 +51,11 @@ h1{
     transform: rotateY(180deg);
   }
 
-  .card.vira .back-face {
+  .card.vira .back-face,.card.cartasIguais .back-face  {
     transform: rotateY(0deg);
   }
 
-  .card.vira .front-face {
+  .card.vira .front-face, .card.cartasIguais .front-face {
     transform: rotateY(-180deg);
   }
   @media(max-width:872px){
